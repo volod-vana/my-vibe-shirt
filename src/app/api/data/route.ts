@@ -3,7 +3,9 @@
 import { NextResponse } from "next/server";
 import { getData } from "@opendatalabs/connect/server";
 import { ConnectError, isValidGrant } from "@opendatalabs/connect/core";
-import { config } from "@/config";
+import { getConfig } from "@/config";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   const { grant } = await request.json();
@@ -17,9 +19,9 @@ export async function POST(request: Request) {
 
   try {
     const data = await getData({
-      privateKey: config.privateKey,
+      privateKey: getConfig().privateKey,
       grant,
-      environment: config.environment,
+      environment: getConfig().environment,
     });
 
     return NextResponse.json({ data });

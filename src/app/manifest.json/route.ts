@@ -4,22 +4,25 @@
 import { ConnectError } from "@opendatalabs/connect/core";
 import { signVanaManifest } from "@opendatalabs/connect/server";
 import { NextResponse } from "next/server";
-import { config } from "@/config";
+import { getConfig } from "@/config";
+
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
+    const cfg = getConfig();
     const vanaBlock = await signVanaManifest({
-      privateKey: config.privateKey,
-      appUrl: config.appUrl,
-      privacyPolicyUrl: `${config.appUrl}/privacy`,
-      termsUrl: `${config.appUrl}/terms`,
-      supportUrl: `${config.appUrl}/support`,
-      webhookUrl: `${config.appUrl}/api/webhook`,
+      privateKey: cfg.privateKey,
+      appUrl: cfg.appUrl,
+      privacyPolicyUrl: `${cfg.appUrl}/privacy`,
+      termsUrl: `${cfg.appUrl}/terms`,
+      supportUrl: `${cfg.appUrl}/support`,
+      webhookUrl: `${cfg.appUrl}/api/webhook`,
     });
 
     const manifest = {
-      name: "Vana Connect — Next.js Starter",
-      short_name: "Vana Starter",
+      name: "Tee Designer — Vana Connect",
+      short_name: "Tee Designer",
       start_url: "/",
       display: "standalone",
       background_color: "#09090b",

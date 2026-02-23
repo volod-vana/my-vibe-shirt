@@ -4,11 +4,13 @@
 import { NextResponse } from "next/server";
 import { connect } from "@opendatalabs/connect/server";
 import { ConnectError } from "@opendatalabs/connect/core";
-import { config } from "@/config";
+import { getConfig } from "@/config";
+
+export const dynamic = "force-dynamic";
 
 export async function POST() {
   try {
-    const result = await connect(config);
+    const result = await connect(getConfig());
     return NextResponse.json(result);
   } catch (err) {
     const message =

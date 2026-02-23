@@ -98,17 +98,6 @@ body {
   align-items: center;
 }
 
-.code-block {
-  font-family: monospace;
-  font-size: 12px;
-  background: #18181b;
-  border: 1px solid #27272a;
-  border-radius: 6px;
-  padding: 8px 10px;
-  color: #d4d4d8;
-  display: block;
-}
-
 .pre-block {
   font-family: monospace;
   font-size: 12px;
@@ -140,4 +129,38 @@ body {
 .text-error {
   color: #ef4444;
   font-size: 13px;
+}
+
+/* ---------- T-shirt generation ---------- */
+
+.generated-image {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid #27272a;
+}
+
+.prompt-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #a1a1aa;
+  margin-top: 16px;
+  padding: 12px;
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 6px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.generating {
+  text-align: center;
+  padding: 48px 0;
+  color: #71717a;
+  animation: pulse 2s ease-in-out infinite;
 }
